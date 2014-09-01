@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32" backgroundcolor="#626262">
+ <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
+  <image source="tileset.png" trans="ff00ff" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="10" name="lechuga01" tilewidth="32" tileheight="32">
+  <image source="lechuga01.png" trans="ff00ff" width="64" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztl40KwyAMhN2Wrut+3v91Z2HCkSYmYc4WZuAoZGjMvlPbKaU0HUC3zsLa16x71qPjk1j9Z9ar4xPrrzozXWCtJ+H3mjxjLf4LrHUOsvWMHfy3/DVua75E1AvavBJ/5EYsXyLiBen/nZOPP33y30TpQZu/xr91/Rp/XB/ywfpe7ugVEuax+uf5Fv2jv63+0R8t6/M6Wv84Fut7fb+wOaz9Nfwvn38EeY/Xpf1h7a/a+efh7T0XpXnH/VfnE7nLvO9Kkr+0+ynC0uubyP7/J/7j/Xcbvfnz2Jv/r7XXdzbXG6b4Gws=
+  </data>
+ </layer>
+</map>

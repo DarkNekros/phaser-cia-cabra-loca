@@ -1,0 +1,17 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #000;
+  overflow: hidden;
+}
+
+#titulo {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cia-cabra-loca {
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}

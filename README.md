@@ -10,7 +10,7 @@ El juego utiliza el siguiente framework:
 
 # Licencia
 
-[Apache License, Version 2.0][2]
+[Apache License, Version 2.0][3]
 
 
 [1]: http://cabraloca.subcultura.es/              "Cia cabra loca"

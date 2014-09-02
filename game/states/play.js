@@ -32,7 +32,7 @@ Play.prototype = {
     this.player = this.game.add.sprite(57, 738, 'cabra');
 
     // Create a new zombie object
-    this.zombie = new Zombie(this.game, 100, 400, 300);
+    this.zombie = new Zombie(this.game, 400, 400);
     // and add it to the game
     this.game.add.existing(this.zombie);
 
@@ -77,8 +77,9 @@ Play.prototype = {
   update: function() {
     this.game.physics.arcade.collide(this.player, this.layer);
     if (this.game.physics.arcade.collide(this.zombie, this.layer)) {
-      this.zombie.walk();
+      this.zombie.pos *= -1;
     }
+    this.zombie.walk();
 
     // Checks to see if the player overlaps with any of the lettuces,
     // if he does call the collectLettuce function
@@ -86,7 +87,6 @@ Play.prototype = {
 
     // Reset the players velocity (movement)
     this.player.body.velocity.set(0);
-    //this.foo.body.velocity.set(0);
 
 //  if (this.game.physics.arcade.collide(this.foo, this.layer)) {
 //    this.foo.body.velocity.x = -10;

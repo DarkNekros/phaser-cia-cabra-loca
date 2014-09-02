@@ -7,6 +7,7 @@ var Zombie = function(game, x, y, frame) {
   
   // set the sprite's anchor to the center
   this.anchor.setTo(0.5, 0.5);
+  this.pos = 1;
   
   // add and play animations
   this.animations.add('walkdeadleft', [0, 1, 2, 3, 4, 5, 6], 14, true);
@@ -20,42 +21,50 @@ Zombie.prototype.update = function() {
 };
 
 Zombie.prototype.walk = function() {
-
-  if (this.pos === false) {
-    // Move to the left
-    this.body.velocity.x = -150;
-    this.pos = true;
+  if (this.pos < 0) {
+    this.body.velocity.x = -105;
     this.animations.play('walkdeadleft');
   }
-  else if (this.pos === true) {
-    // Move to the right
-    this.body.velocity.x = 150;
-    this.pos = false;
+  else {
+    this.body.velocity.x = 105;
     this.animations.play('walkdeadright');
   }
-  else if (this.pos === false) {
-    // Move up
-    this.body.velocity.y = -150;
 
-    if (this.pos) {
-      this.animations.play('walkdeadleft');
-    }
-    else {
-      this.animations.play('walkdeadright');
-    }
-      
-  }
-  else if (this.pos) {
-    // Move down
-    this.body.velocity.y = 150;
-
-    if (this.pos) {
-      this.animations.play('walkdeadleft');
-    }
-    else {
-      this.animations.play('walkdeadright');
-    }
-  }
+//  if (this.pos === false) {
+//    // Move to the left
+//    this.body.velocity.x = -150;
+//    this.pos = true;
+//    this.animations.play('walkdeadleft');
+//  }
+//  else if (this.pos === true) {
+//    // Move to the right
+//    this.body.velocity.x = 150;
+//    this.pos = false;
+//    this.animations.play('walkdeadright');
+//  }
+//  else if (this.pos === false) {
+//    // Move up
+//    this.body.velocity.y = -150;
+//
+//    if (this.pos) {
+//      this.animations.play('walkdeadleft');
+//    }
+//    else {
+//      this.animations.play('walkdeadright');
+//    }
+//
+//  }
+//  else if (this.pos) {
+//    // Move down
+//    this.body.velocity.y = 150;
+//
+//    if (this.pos) {
+//      this.animations.play('walkdeadleft');
+//    }
+//    else {
+//      this.animations.play('walkdeadright');
+//    }
+//  }
 };
 
 module.exports = Zombie;

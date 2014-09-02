@@ -1,8 +1,11 @@
 
 'use strict';
-  function Play() {}
-  Play.prototype = {
-    create: function() {  
+var Zombie = require('../prefabs/zombie');
+
+function Play() {}
+
+Play.prototype = {
+  create: function() {
     // We're going to be using physics, so enable the Arcade Physics system
     // this.game.physics.startSystem(Phaser.Physics.ARCADE);
     
@@ -28,25 +31,18 @@
     // The player and its settings
     this.player = this.game.add.sprite(57, 738, 'cabra');
 
-    // The foo and its settings
-    this.foo = this.game.add.sprite(96, 1472, 'zombie');
+    // Create a new zombie object
+    this.zombie = new Zombie(this.game, 100, 400, 300);
+    // and add it to the game
+    this.game.add.existing(this.zombie);
 
     // We need to enable physics on the player
-    this.game.physics.arcade.enable(this.foo, Phaser.Physics.ARCADE);
     this.game.physics.arcade.enable(this.player, Phaser.Physics.ARCADE);
     this.game.camera.follow(this.player);
-
-    // Player physics properties. Give the little guy a slight bounce.
-    // this.player.body.bounce.y = 0.2;
-    // this.player.body.gravity.y = 300;
-    // this.player.body.collideWorldBounds = true;
 
     // Our two animations, walking left and right.
     this.player.animations.add('left', [0, 1, 2, 3], 10, true);
     this.player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-    // this.foo.animations.add('left', [0, 1, 2, 3, 4, 5, 6], 14, true);
-    // this.foo.animations.add('right', [7, 8, 9, 10, 11, 12, 13], 14, true);
 
     // Finally some lettuces to collect
     this.lettuces = this.game.add.group();
@@ -79,12 +75,10 @@
     this.cursors = this.game.input.keyboard.createCursorKeys();
   },
   update: function() {
-      
-    // Collide the player and the stars with the platforms
-    // this.game.physics.arcade.collide(this.player, this.platforms);
-    // this.game.physics.arcade.collide(this.stars, this.platforms);
     this.game.physics.arcade.collide(this.player, this.layer);
-    this.game.physics.arcade.collide(this.foo, this.layer);
+    if (this.game.physics.arcade.collide(this.zombie, this.layer)) {
+      this.zombie.walk();
+    }
 
     // Checks to see if the player overlaps with any of the lettuces,
     // if he does call the collectLettuce function
@@ -92,7 +86,7 @@
 
     // Reset the players velocity (movement)
     this.player.body.velocity.set(0);
-    this.foo.body.velocity.set(0);
+    //this.foo.body.velocity.set(0);
 
 //  if (this.game.physics.arcade.collide(this.foo, this.layer)) {
 //    this.foo.body.velocity.x = -10;
@@ -170,5 +164,5 @@
     this.game.state.start('gameover');
   }
 };
-  
+
 module.exports = Play;
